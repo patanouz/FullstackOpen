@@ -39,23 +39,28 @@ const Content = (props) => {
 
 return (
   <div>
-    <p>
-      {props.array[0]} {props.array[1]}
-    </p>
-    
-    <p>
-      {props.array[2]} {props.array[3]}
-    </p>
-    
-    <p>
-      {props.array[4]} {props.array[5]}
-    </p>
+    <Part array={[props.array[0], props.array[1]]} />
+    <Part array={[props.array[2], props.array[3]]} />
+    <Part array={[props.array[4], props.array[5]]} />
     
 
   </div>
 )
 
 }
+
+const Part = (props) => {
+
+return (
+  <div>
+    {props.array[0]} {props.array[1]}
+  </div>
+)
+
+
+}
+
+
 
 const Total = (props) => {
   
