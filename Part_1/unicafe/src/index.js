@@ -27,7 +27,7 @@ const Buttons = (props) => {
 
   return (
 
-    <Button text={props.text} handleClick={props.handleClick}/>
+    <Button text={props.text} handleClick={props.handleClick} />
   )
 }
 
@@ -41,9 +41,9 @@ const Button = (props) => {
   )
 }
 
-const Statistics = ({Good, Neutral, Bad}) => {
+const Statistics = ({ Good, Neutral, Bad }) => {
 
-  if((Good + Neutral + Bad) === 0) return (
+  if ((Good + Neutral + Bad) === 0) return (
     <div>
       No feedback given
     </div>
@@ -51,24 +51,26 @@ const Statistics = ({Good, Neutral, Bad}) => {
 
   return (
     <div>
-      <Statistic text="Good" value={Good} />
-      <Statistic text="Neutral" value={Neutral} />
-      <Statistic text="Bad" value={Bad} />
-      <Statistic text="All" value={Good + Neutral + Bad} />
-      <Statistic text="Average" value={(Good - Bad) / (Good + Neutral + Bad)} />
-      <Statistic text="Positive" value={(Good / (Good + Neutral + Bad)) * 100} percent=" %" />
-    
+      <table>
+        <tbody>
+          <Statistic text="Good" value={Good} />
+          <Statistic text="Neutral" value={Neutral} />
+          <Statistic text="Bad" value={Bad} />
+          <Statistic text="All" value={Good + Neutral + Bad} />
+          <Statistic text="Average" value={(Good - Bad) / (Good + Neutral + Bad)} />
+          <Statistic text="Positive" value={(Good / (Good + Neutral + Bad)) * 100} percent=" %" />
+        </tbody>
+      </table>
     </div>
   )
 }
 
 const Statistic = (props) => {
-
-  return (
-    <div>
-      {props.text} {props.value} {props.percent}
-    </div>
-  )
+  return <tr>
+    <td>{props.text}</td>
+    <td>{props.value}</td>
+    <td>{props.percent}</td>
+  </tr>
 }
 
 
