@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom'
 
 const App = (props) => {
   const [selected, setSelected] = useState(0)
-
+  const [votes, setVotes] = useState(new Array(anecdotes.length).fill(0))
 
   return (
     <div>
       {setAnecdote(selected)}<br/>
+      Has {votes[selected]} votes<br/>
+      <button onClick={() => setVotes(upVote({votes, selected}))}>
+        Vote
+      </button>
       <button onClick={() => setSelected(generateNumber)} >
         Next anecdote
       </button>
@@ -16,9 +20,18 @@ const App = (props) => {
 }
 
 
+const upVote = ({votes, selected}) => {
+  const newVotes = [...votes] 
+  newVotes[selected]++
+  return newVotes
+}
+
+
 const setAnecdote = (props) => anecdotes[props]
 
+
 const generateNumber = () => Math.round(Math.random() * 5)
+
 
 const anecdotes = [
   'If it hurts, do it more often',
